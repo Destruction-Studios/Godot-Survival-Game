@@ -43,6 +43,12 @@ func add_meta_upgrade(upgrade:MetaUpgrade):
 	save()
 
 
+func get_upgrade_count(id:String)->int:
+	if MetaProgression.save_data["meta_upgrades"].has(id):
+		return MetaProgression.save_data["meta_upgrades"][id]["quantity"]
+	return 0
+
+
 func on_xp_collected(number:float):
 	save_data["meta_upgrade_currency"] += number;
 	

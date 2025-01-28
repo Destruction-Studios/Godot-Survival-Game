@@ -6,6 +6,7 @@ extends PanelContainer
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var purchase_button: Button = %PurchaseButton
 @onready var progress_label: Label = %ProgressLabel
+@onready var count_label: Label = %CountLabel
 
 
 var current_upgrade:MetaUpgrade
@@ -23,14 +24,25 @@ func set_meta_upgrade(upgrade:MetaUpgrade):
 
 
 func update_progress():
+	if current_upgrade == null:
+		return
+	
+	var owned_upgrades = MetaProgression.get_upgrade_count(current_upgrade.id)
+	
+	var is_maxed = owned_upgrades >= current_upgrade.max_quantity
 	var currency = MetaProgression.save_data["meta_upgrade_currency"]
 	
 	var percent = currency / current_upgrade.cost
 	percent = min(percent, 1)
 	progress_bar.value = percent
-	purchase_button.disabled = percent < 1
-	
+	purchase_button.disabled = percent < 1 or is_maxed
 	progress_label.text = str(currency) + "/" + str(current_upgrade.cost)
+	
+	if is_maxed:
+		purchase_button.text = "Max"
+	
+	count_label.text = "{0}/{1}".format([owned_upgrades, current_upgrade.max_quantity])
+
 
 func on_purchased_pressed():
 	if current_upgrade == null:
