@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgmfm1ajf521g"]
+[gd_scene load_steps=9 format=3 uid="uid://cgmfm1ajf521g"]
 
 [ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_cphl5"]
+[ext_resource type="AudioStream" uid="uid://cdjjg43y5omv3" path="res://assets/audio/music/jingles_victory.ogg" id="2_dxxyp"]
 [ext_resource type="PackedScene" uid="uid://ds57xh7hocofo" path="res://scenes/ui/sound_button.tscn" id="2_jyrqg"]
+[ext_resource type="AudioStream" uid="uid://b1pys5gayi53d" path="res://assets/audio/music/jingles_defeat.ogg" id="3_16fho"]
 
 [sub_resource type="Animation" id="Animation_ad2t5"]
 length = 0.001
@@ -62,6 +64,16 @@ _data = {
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_cphl5")
+
+[node name="VictoryStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dxxyp")
+volume_db = -5.0
+bus = &"sfx"
+
+[node name="DefeatStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_16fho")
+volume_db = -5.0
+bus = &"sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../ColorRect")
