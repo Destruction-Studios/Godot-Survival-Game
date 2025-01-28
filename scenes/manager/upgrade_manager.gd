@@ -14,7 +14,7 @@ var upgrade_sword_damage = preload("res://resources/upgrades/sword_damage.tres")
 var upgrade_player_speed = preload("res://resources/upgrades/player_speed.tres");
 
 func _ready():
-	upgrade_pool.add_item(upgrade_axe, 1000)
+	upgrade_pool.add_item(upgrade_axe, 8)
 	upgrade_pool.add_item(upgrade_sword_rate, 10);
 	upgrade_pool.add_item(upgrade_sword_damage, 10);
 	upgrade_pool.add_item(upgrade_player_speed, 5);
