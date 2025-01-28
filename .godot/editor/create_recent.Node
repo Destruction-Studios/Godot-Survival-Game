@@ -1,0 +1,14 @@
+AudioStreamPlayer
+Button
+AudioStreamPlayer2D
+AudioStreamPlayer3D
+AnimationPlayer
+ColorRect
+CanvasLayer
+VBoxContainer
+MarginContainer
+PanelContainer
+Node
+Sprite2D
+Label
+Node2D

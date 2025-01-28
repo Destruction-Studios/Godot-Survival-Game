@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://bfy4tiw6lcg4f"]
+
+[ext_resource type="PackedScene" uid="uid://onhdec4vviol" path="res://scenes/game_object/wizard_enemy/wizard_enemy.tscn" id="1_s43ah"]
+[ext_resource type="Script" path="res://resources/enemies/enemy.gd" id="2_xnxei"]
+
+[resource]
+script = ExtResource("2_xnxei")
+enemy_scene = ExtResource("1_s43ah")
+spawn_at_difficulty = 6
+weight = 30

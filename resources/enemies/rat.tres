@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://c6xqqq0wrswhj"]
+
+[ext_resource type="PackedScene" uid="uid://xxplqqx0fer8" path="res://scenes/game_object/basic_enemy/basic_enemy.tscn" id="1_2ckph"]
+[ext_resource type="Script" path="res://resources/enemies/enemy.gd" id="2_bcepr"]
+
+[resource]
+script = ExtResource("2_bcepr")
+enemy_scene = ExtResource("1_2ckph")
+spawn_at_difficulty = 0
+weight = 10
