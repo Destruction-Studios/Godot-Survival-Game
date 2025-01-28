@@ -40,6 +40,7 @@ func add_meta_upgrade(upgrade:MetaUpgrade):
 		save_data["meta_upgrades"][upgrade.id] = DEFAULT_META_UPGRADE_DATA
 		
 	save_data["meta_upgrades"][upgrade.id]["quantity"] += 1
+	save()
 
 
 func on_xp_collected(number:float):
