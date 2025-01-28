@@ -1,0 +1,7 @@
+res://scenes/ui/ability_upgrade_card.tscn
+res://resources/theme/theme.tres
+res://resources/tileset.tres
+res://scenes/component/hit_flash_component.gdshader
+res://scenes/ui/vignette.gdshader
+res://scenes/ui/ability_upgrade_card.gd
+res://scenes/main/main.tscn

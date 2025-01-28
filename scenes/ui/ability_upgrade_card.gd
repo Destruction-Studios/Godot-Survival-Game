@@ -52,5 +52,5 @@ func on_gui_input(event:InputEvent):
 func on_mouse_entered():
 	if disabled:
 		return;
-		
+	
 	$HoverAnimationPlayer.play("hover")
