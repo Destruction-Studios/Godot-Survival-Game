@@ -11,7 +11,7 @@ func _ready():
 	
 	var tween = create_tween()
 	tween.tween_method(tween_method, 0.0, 2.0, 3)
-	tween.tween_callback(queue_free)
+	tween.tween_callback(on_tween_ended)
 
 
 func tween_method(rotations:float):
@@ -24,3 +24,8 @@ func tween_method(rotations:float):
 		return
 	
 	global_position = player.global_position + (current_direction * current_radius)
+
+func on_tween_ended():
+	$AnimationPlayer.play("out")
+	await $AnimationPlayer.animation_finished
+	queue_free()

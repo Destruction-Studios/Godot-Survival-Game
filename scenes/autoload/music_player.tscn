@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6c4jfg1mm8tj"]
+[gd_scene load_steps=3 format=3 uid="uid://b1nu45jbknldp"]
 
-[ext_resource type="AudioStream" uid="uid://b1pys5gayi53d" path="res://assets/audio/music/jingles_defeat.ogg" id="1_pih3g"]
+[ext_resource type="AudioStream" uid="uid://0qovmhsre8cf" path="res://assets/audio/music/hear_what_they_say.mp3" id="1_anx80"]
 [ext_resource type="Script" path="res://scenes/autoload/music_player.gd" id="2_7gbbg"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 process_mode = 3
-stream = ExtResource("1_pih3g")
+stream = ExtResource("1_anx80")
 volume_db = -13.0
 autoplay = true
 bus = &"music"

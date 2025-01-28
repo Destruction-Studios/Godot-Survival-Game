@@ -12,3 +12,6 @@ res://scenes/manager/arena_time_manager.tscn
 res://scenes/autoload/music_player.tscn
 res://resources/upgrades/axe.tres
 res://scenes/autoload/music_player.gd
+res://scenes/ability/axe_ability/axe_ability.tscn
+res://scenes/ability/axe_ability/axe_ability.gd
+res://scenes/manager/upgrade_manager.gd
