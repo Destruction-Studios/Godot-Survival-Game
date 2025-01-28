@@ -38,6 +38,9 @@ func set_bus_volume_perc(bus_name:String, perc:float):
 
 
 func on_back_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transition_halfway
+	
 	back_pressed.emit()
 
 
