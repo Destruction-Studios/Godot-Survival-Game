@@ -1,13 +1,16 @@
 extends Node
+class_name TimeManager
 
 signal arena_difficulty_increased(current_arena_difficulty:int)
+signal tick(tick_value:int)
 
 const DIFFICULTY_INTERVAL = 5;
 
 @export var end_screen_scene:PackedScene;
-
 @onready var timer = $Timer
 
+var tick_cooldown = 1
+var tick_value = 0
 var arena_difficulty = 0;
 
 func _ready():
@@ -15,6 +18,12 @@ func _ready():
 
 
 func _process(delta):
+	tick_cooldown -= delta
+	if tick_cooldown <= 0:
+		tick_value += 1
+		tick.emit(tick_value)
+		tick_cooldown = 1
+		
 	var next_time_target = timer.wait_time - ((arena_difficulty + 1) * DIFFICULTY_INTERVAL)
 	if timer.time_left <= next_time_target:
 		arena_difficulty += 1;

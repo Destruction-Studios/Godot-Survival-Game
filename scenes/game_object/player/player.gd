@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 const SPEED_VIAL_INCREASE = 1.15
 
+@export var arena_time_manager:TimeManager
+
 @onready var damage_interval_timer = $DamageIntervalTimer;
 @onready var health_component = $HealthComponent;
 @onready var health_bar = $HealthBar;
@@ -15,11 +17,14 @@ var base_speed = 0;
 var is_speed_vial_active = false
 
 func _ready():	
+	arena_time_manager.tick.connect(on_tick)
+	
 	base_speed = velocity_component.max_speed;
 	
 	$CollisionArea2D.body_entered.connect(on_body_entered);
 	$CollisionArea2D.body_exited.connect(on_body_exited);
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout);
+	health_component.health_decreased.connect(on_health_decreased)
 	health_component.health_changed.connect(on_health_changed)
 	
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
@@ -45,6 +50,14 @@ func _process(delta):
 	var move_sign = sign(movement_vector.x)
 	if move_sign != 0:
 		visuals.scale = Vector2(move_sign, 1);
+
+
+func on_tick(tick_value):
+	var meta_regen_quantitiy = MetaProgression.get_upgrade_count("health_regen")
+	if meta_regen_quantitiy > 0:
+		if (tick_value % 20) == 0:
+			health_component.heal(meta_regen_quantitiy)
+
 
 
 func get_movement_vector():
@@ -79,10 +92,14 @@ func on_damage_interval_timer_timeout():
 	check_deal_damage();
 
 
-func on_health_changed():
+func on_health_decreased():
 	GameEvents.emit_player_damaged();
 	update_health_display();
 	$RandomStreamPlayerComponent.play_random()
+
+
+func on_health_changed():
+	update_health_display()
 
 
 func on_speed_vial_timer_timeout():
