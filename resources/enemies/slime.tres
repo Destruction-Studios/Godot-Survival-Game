@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://bl4mbjw87d6o7"]
+
+[ext_resource type="PackedScene" uid="uid://bb7nybvuw8e2l" path="res://scenes/game_object/slime_enemy/slime_enemy.tscn" id="1_pmh2f"]
+[ext_resource type="Script" path="res://resources/enemies/enemy.gd" id="2_eo2vs"]
+
+[resource]
+script = ExtResource("2_eo2vs")
+enemy_scene = ExtResource("1_pmh2f")
+spawn_at_difficulty = 5
+weight = 15

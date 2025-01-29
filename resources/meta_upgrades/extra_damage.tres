@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_ul48h")
 id = "extra_damage"
-max_quantity = 3
+max_quantity = 6
 cost = 150
+cost_increase_per_level = 2.0
 title = "Extra Damage"
 description = "Increases overall damage by 5%"

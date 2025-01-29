@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const SPEED_VIAL_INCREASE = 1.15
+
 @onready var damage_interval_timer = $DamageIntervalTimer;
 @onready var health_component = $HealthComponent;
 @onready var health_bar = $HealthBar;
@@ -10,6 +12,7 @@ extends CharacterBody2D
 
 var number_colliding_bodies = 0;
 var base_speed = 0;
+var is_speed_vial_active = false
 
 func _ready():	
 	base_speed = velocity_component.max_speed;
@@ -20,6 +23,9 @@ func _ready():
 	health_component.health_changed.connect(on_health_changed)
 	
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
+	GameEvents.speed_vial_collected.connect(on_speed_vial_collected)
+	
+	$SpeedVialTimer.timeout.connect(on_speed_vial_timer_timeout)
 	
 	update_health_display();
 
@@ -79,9 +85,24 @@ func on_health_changed():
 	$RandomStreamPlayerComponent.play_random()
 
 
+func on_speed_vial_timer_timeout():
+	if not is_speed_vial_active:
+		return
+	is_speed_vial_active = false
+	velocity_component.max_speed /= SPEED_VIAL_INCREASE
+
+
 func on_ability_upgrade_added(ability_upgrade:AbilityUpgrade, current_upgrades:Dictionary):
 	if ability_upgrade is Ability:
 		var ability = ability_upgrade as Ability
 		abilities.add_child(ability.ability_controller_scene.instantiate())
 	elif ability_upgrade.id == "player_speed":
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .15)
+
+
+func on_speed_vial_collected():
+	$SpeedVialTimer.start()
+	if is_speed_vial_active:
+		return
+	is_speed_vial_active = true
+	velocity_component.max_speed *= SPEED_VIAL_INCREASE

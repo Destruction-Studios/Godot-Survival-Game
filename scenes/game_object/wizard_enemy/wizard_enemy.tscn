@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://onhdec4vviol"]
+[gd_scene load_steps=23 format=3 uid="uid://onhdec4vviol"]
 
 [ext_resource type="Texture2D" uid="uid://cgqjgyquqel36" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_dlrk1"]
 [ext_resource type="PackedScene" uid="uid://dmcujpobcfwce" path="res://scenes/component/velocity_component.tscn" id="1_kx7tq"]
@@ -9,12 +9,13 @@
 [ext_resource type="AudioStream" uid="uid://kldtqs2b5tra" path="res://assets/audio/sfx/footstep_carpet_000.ogg" id="3_umih6"]
 [ext_resource type="AudioStream" uid="uid://fkn8p0lnpa3c" path="res://assets/audio/sfx/footstep_carpet_001.ogg" id="4_2ppw4"]
 [ext_resource type="PackedScene" uid="uid://d4i45y5vi6v54" path="res://scenes/component/hurtbox_component.tscn" id="4_y35do"]
-[ext_resource type="PackedScene" uid="uid://jcodq3d4wp8l" path="res://scenes/component/vial_drop_component.tscn" id="5_36g23"]
 [ext_resource type="AudioStream" uid="uid://dantrgpktx2k2" path="res://assets/audio/sfx/footstep_carpet_002.ogg" id="5_g6c1y"]
 [ext_resource type="AudioStream" uid="uid://7yl3cuaw8xf6" path="res://assets/audio/sfx/footstep_carpet_003.ogg" id="6_esffl"]
 [ext_resource type="PackedScene" uid="uid://v2wgkouhkfox" path="res://scenes/component/hit_flash_component.tscn" id="6_lakqx"]
 [ext_resource type="AudioStream" uid="uid://cqrk027cn0dec" path="res://assets/audio/sfx/footstep_carpet_004.ogg" id="7_3rgf0"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="7_vpx5n"]
+[ext_resource type="PackedScene" uid="uid://cbnkau0gfhui8" path="res://scenes/component/item_drop_component.tscn" id="8_guq18"]
+[ext_resource type="PackedScene" uid="uid://dpis51ni4n4ls" path="res://scenes/game_object/experience_vial/experience_vial.tscn" id="9_1mjfb"]
 
 [sub_resource type="Animation" id="Animation_gfmg0"]
 length = 0.001
@@ -146,13 +147,15 @@ libraries = {
 }
 autoplay = "walk"
 
+[node name="ItemDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_guq18")]
+drop_percent = 0.7
+does_exp_gain_work = true
+health_component = NodePath("../HealthComponent")
+drop_scene = ExtResource("9_1mjfb")
+
 [node name="VelocityComponent" parent="." instance=ExtResource("1_kx7tq")]
 max_speed = 60
 acceleration = 20.0
-
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_36g23")]
-drop_percent = 0.7
-health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_pb7ln")]
 max_health = 30.0
