@@ -8,6 +8,10 @@ var additional_damage_percent = 1;
 func _ready():
 	$Timer.timeout.connect(on_timer_timeout)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
+	
+	var owned_meta_damage = MetaProgression.get_upgrade_count("extra_damage")
+	if owned_meta_damage > 0:
+		additional_damage_percent += .05 * owned_meta_damage
 
 func on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player") as Node2D

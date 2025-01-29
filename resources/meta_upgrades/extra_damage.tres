@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://7l5jc64bi1ew"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_ul48h"]
+
+[resource]
+script = ExtResource("1_ul48h")
+id = "extra_damage"
+max_quantity = 3
+cost = 150
+title = "Extra Damage"
+description = "Increases overall damage by 5%"

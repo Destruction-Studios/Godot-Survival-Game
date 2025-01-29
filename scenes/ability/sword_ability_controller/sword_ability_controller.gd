@@ -13,6 +13,10 @@ func _ready():
 	base_wait_time = $Timer.wait_time;
 	$Timer.timeout.connect(on_timer_timeout);
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
+	
+	var owned_meta_damage = MetaProgression.get_upgrade_count("extra_damage")
+	if owned_meta_damage > 0:
+		additional_damage_percent += .05 * owned_meta_damage
 
 
 func on_timer_timeout():
