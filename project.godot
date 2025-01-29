@@ -15,7 +15,7 @@ run/main_scene="res://scenes/ui/main_menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="GodotSurvivalGame"
 config/features=PackedStringArray("4.3", "Forward Plus")
-boot_splash/bg_color=Color(0.247059, 0.14902, 0.192157, 1)
+boot_splash/bg_color=Color(0.14902, 0.168627, 0.266667, 1)
 boot_splash/image="res://icon.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
@@ -29,6 +29,7 @@ GameEvents="*res://scenes/autoload/game_events.tscn"
 MusicPlayer="*res://scenes/autoload/music_player.tscn"
 ScreenTransition="*res://scenes/autoload/screen_transition.tscn"
 MetaProgression="*res://scenes/autoload/meta_progression.tscn"
+OptionsSaveManager="*res://scenes/autoload/options_save_manager.tscn"
 
 [debug]
 

@@ -1,7 +1,7 @@
 extends Node
 
 
-const SAVE_FILE_PATH = "user://game.save"
+const SAVE_FILE_PATH = "user://saves/game.save"
 
 var DEFAULT_META_UPGRADE_DATA = {
 	"quantity": 0
@@ -25,8 +25,8 @@ func load_save():
 		return
 	
 	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
-	print("Loading Save with value: ", save_data)
 	save_data = file.get_var()
+	print("Loading Save with value: ", save_data)
 
 
 func save():

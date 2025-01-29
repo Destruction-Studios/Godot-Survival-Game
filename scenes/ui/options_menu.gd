@@ -14,6 +14,11 @@ func _ready():
 	sfx_slider.value_changed.connect(on_audio_slider_changed.bind("sfx"))
 	music_slider.value_changed.connect(on_audio_slider_changed.bind("music"))
 	
+	var options_data = OptionsSaveManager.options
+	
+	sfx_slider.value = options_data.sfx_volume
+	music_slider.value = options_data.music_volume
+	
 	update_display()
 
 func update_display():
@@ -38,6 +43,10 @@ func set_bus_volume_perc(bus_name:String, perc:float):
 
 
 func on_back_pressed():
+	OptionsSaveManager.options.music_volume = music_slider.value
+	OptionsSaveManager.options.sfx_volume = sfx_slider.value
+	OptionsSaveManager.save()
+	
 	ScreenTransition.transition()
 	await ScreenTransition.transition_halfway
 	
