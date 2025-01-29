@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyInfo" load_steps=3 format=3 uid="uid://c1m1abfna1d18"]
+
+[ext_resource type="PackedScene" uid="uid://ddn03ea4u3rw0" path="res://scenes/game_object/bat_enemy/bat_enemy.tscn" id="1_cw7lv"]
+[ext_resource type="Script" path="res://resources/enemies/enemy.gd" id="2_qxr52"]
+
+[resource]
+script = ExtResource("2_qxr52")
+enemy_scene = ExtResource("1_cw7lv")
+spawn_at_difficulty = 18
+weight = 8

@@ -132,7 +132,7 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_vjymi"]
 radius = 5.0
 
-[node name="Wizard_Enemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="WizardEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 9
 script = ExtResource("1_t5yu7")
@@ -158,7 +158,7 @@ max_speed = 60
 acceleration = 20.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_pb7ln")]
-max_health = 30.0
+max_health = 20.0
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_reng6")]
 health_component = NodePath("../HealthComponent")
