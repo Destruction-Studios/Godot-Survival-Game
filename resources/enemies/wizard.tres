@@ -7,4 +7,4 @@
 script = ExtResource("2_xnxei")
 enemy_scene = ExtResource("1_s43ah")
 spawn_at_difficulty = 6
-weight = 30
+weight = 18
