@@ -1,0 +1,29 @@
+[gd_scene load_steps=10 format=3 uid="uid://cfiqa7lvskme8"]
+
+[ext_resource type="Script" path="res://scenes/game_object/speed_vial/speed_vial.gd" id="1_6cfgt"]
+[ext_resource type="PackedScene" uid="uid://dk0p8l0l0q5gc" path="res://scenes/component/random_stream_player_component_2d.tscn" id="2_gwpw2"]
+[ext_resource type="AudioStream" uid="uid://buaelfis5k7p4" path="res://assets/audio/sfx/impactGeneric_light_000.ogg" id="3_qxjul"]
+[ext_resource type="AudioStream" uid="uid://bb02srtkju8ma" path="res://assets/audio/sfx/impactGeneric_light_001.ogg" id="4_6id0q"]
+[ext_resource type="AudioStream" uid="uid://defcijw1j7sd2" path="res://assets/audio/sfx/impactGeneric_light_002.ogg" id="5_vetdt"]
+[ext_resource type="AudioStream" uid="uid://cbmmspk2nfgdo" path="res://assets/audio/sfx/impactGeneric_light_003.ogg" id="6_l8p8c"]
+[ext_resource type="AudioStream" uid="uid://bkqjwaycjf1hi" path="res://assets/audio/sfx/impactGeneric_light_004.ogg" id="7_3ox5e"]
+[ext_resource type="Texture2D" uid="uid://dum7kukmvgnqd" path="res://scenes/game_object/speed_vial/speed_vial.png" id="8_0ed2k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xlqf3"]
+radius = 15.0
+
+[node name="SpeedVial" type="Node2D"]
+script = ExtResource("1_6cfgt")
+
+[node name="RandomStreamPlayerComponent" parent="." instance=ExtResource("2_gwpw2")]
+streams = Array[AudioStream]([ExtResource("3_qxjul"), ExtResource("4_6id0q"), ExtResource("5_vetdt"), ExtResource("6_l8p8c"), ExtResource("7_3ox5e")])
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xlqf3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("8_0ed2k")

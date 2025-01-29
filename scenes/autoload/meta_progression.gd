@@ -34,7 +34,7 @@ func save():
 	print("Saving wih value: ", save_data)
 	file.store_var(save_data)
 
-
+#TODO fix meta adding thing to both and figure out alg for the thing
 func add_meta_upgrade(upgrade:MetaUpgrade):
 	if not save_data["meta_upgrades"].has(upgrade.id):
 		save_data["meta_upgrades"][upgrade.id] = DEFAULT_META_UPGRADE_DATA
@@ -50,7 +50,7 @@ func get_upgrade_count(id:String)->int:
 
 
 func on_xp_collected(number:float):
-	save_data["meta_upgrade_currency"] += number;
+	save_data["meta_upgrade_currency"] += 500000;
 	
 
 func add_win():
@@ -58,3 +58,13 @@ func add_win():
 
 func add_loss():
 	save_data["losses"] += 1
+
+
+func calc_price(upgrade:MetaUpgrade):
+	var result = upgrade.cost
+	var count = get_upgrade_count(upgrade.id)
+	
+	if count >= 1:
+		result += result * count * upgrade.cost_increase_per_level
+	
+	return round(result)

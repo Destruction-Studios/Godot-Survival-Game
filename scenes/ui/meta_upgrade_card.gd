@@ -28,15 +28,15 @@ func update_progress():
 		return
 	
 	var owned_upgrades = MetaProgression.get_upgrade_count(current_upgrade.id)
-	
+	var cost = MetaProgression.calc_price(current_upgrade)
 	var is_maxed = owned_upgrades >= current_upgrade.max_quantity
 	var currency = MetaProgression.save_data["meta_upgrade_currency"]
 	
-	var percent = currency / current_upgrade.cost
+	var percent = currency / cost
 	percent = min(percent, 1)
 	progress_bar.value = percent
 	purchase_button.disabled = percent < 1 or is_maxed
-	progress_label.text = str(currency) + "/" + str(current_upgrade.cost)
+	progress_label.text = str(currency) + "/" + str(cost)
 	
 	if is_maxed:
 		purchase_button.text = "Max"
@@ -48,9 +48,8 @@ func on_purchased_pressed():
 	if current_upgrade == null:
 		return
 		
-	
 	MetaProgression.add_meta_upgrade(current_upgrade)
-	MetaProgression.save_data["meta_upgrade_currency"] -= current_upgrade.cost
+	MetaProgression.save_data["meta_upgrade_currency"] -= MetaProgression.calc_price(current_upgrade)
 	MetaProgression.save()
 	get_tree().call_group("meta_upgrade_card", "update_progress")
 	
