@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://resources/enemies/enemy.gd" id="8_nknti"]
 [ext_resource type="Resource" uid="uid://bfy4tiw6lcg4f" path="res://resources/enemies/wizard.tres" id="9_fdq18"]
 [ext_resource type="Resource" uid="uid://bl4mbjw87d6o7" path="res://resources/enemies/slime.tres" id="11_1whvf"]
-[ext_resource type="Resource" uid="uid://c1m1abfna1d18" path="res://resources/enemies/bat.tres" id="12_kx4fw"]
+[ext_resource type="Resource" path="res://resources/enemies/bat.tres" id="12_kx4fw"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_basr7")
