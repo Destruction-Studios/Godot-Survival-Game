@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1nu45jbknldp"]
 
-[ext_resource type="AudioStream" uid="uid://0qovmhsre8cf" path="res://assets/audio/music/hear_what_they_say.mp3" id="1_anx80"]
+[ext_resource type="AudioStream" uid="uid://pwxxrk1yhbhd" path="res://assets/audio/music/mountain_trials.mp3" id="1_5afcy"]
 [ext_resource type="Script" path="res://scenes/autoload/music_player.gd" id="2_7gbbg"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 process_mode = 3
-stream = ExtResource("1_anx80")
-volume_db = -13.0
+stream = ExtResource("1_5afcy")
+volume_db = -20.0
 autoplay = true
 bus = &"music"
 script = ExtResource("2_7gbbg")
