@@ -3,10 +3,6 @@ extends Node
 
 const SAVE_FILE_PATH = "user://saves/game.save"
 
-var DEFAULT_META_UPGRADE_DATA = {
-	"quantity": 0
-}
-
 var save_data: Dictionary = {
 	"wins": 0,
 	"losses": 0,
@@ -34,12 +30,13 @@ func save():
 	print("Saving wih value: ", save_data)
 	file.store_var(save_data)
 
-#TODO fix meta adding thing to both and figure out alg for the thing
 func add_meta_upgrade(upgrade:MetaUpgrade):
-	if not save_data["meta_upgrades"].has(upgrade.id):
-		save_data["meta_upgrades"][upgrade.id] = DEFAULT_META_UPGRADE_DATA
-		
-	save_data["meta_upgrades"][upgrade.id]["quantity"] += 1
+	if not save_data.meta_upgrades.has(upgrade.id):
+		save_data.meta_upgrades[upgrade.id] = {
+			"quantity": 0
+		}
+	
+	save_data.meta_upgrades[upgrade.id].quantity += 1
 	save()
 
 
@@ -50,7 +47,7 @@ func get_upgrade_count(id:String)->int:
 
 
 func on_xp_collected(number:float):
-	save_data["meta_upgrade_currency"] += 500000;
+	save_data["meta_upgrade_currency"] += number;
 	
 
 func add_win():
@@ -67,4 +64,4 @@ func calc_price(upgrade:MetaUpgrade):
 	if count >= 1:
 		result += result * count * upgrade.cost_increase_per_level
 	
-	return round(result)
+	return upgrade.cost

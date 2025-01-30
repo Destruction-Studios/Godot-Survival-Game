@@ -27,6 +27,8 @@ func update_progress():
 	if current_upgrade == null:
 		return
 	
+	#print("UPDATING PROGRESS: ", current_upgrade.id)
+	
 	var owned_upgrades = MetaProgression.get_upgrade_count(current_upgrade.id)
 	var cost = MetaProgression.calc_price(current_upgrade)
 	var is_maxed = owned_upgrades >= current_upgrade.max_quantity
@@ -47,7 +49,9 @@ func update_progress():
 func on_purchased_pressed():
 	if current_upgrade == null:
 		return
-		
+	
+	print("clicked")
+	
 	MetaProgression.add_meta_upgrade(current_upgrade)
 	MetaProgression.save_data["meta_upgrade_currency"] -= MetaProgression.calc_price(current_upgrade)
 	MetaProgression.save()
