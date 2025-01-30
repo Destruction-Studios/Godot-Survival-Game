@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dhfps6gneyhhv"]
+[gd_scene load_steps=17 format=3 uid="uid://dhfps6gneyhhv"]
 
 [ext_resource type="TileSet" uid="uid://d2orcxbio2q2d" path="res://resources/tileset.tres" id="1_48yq3"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_basr7"]
@@ -15,7 +15,6 @@
 [ext_resource type="Resource" uid="uid://c6xqqq0wrswhj" path="res://resources/enemies/rat.tres" id="8_n4v6b"]
 [ext_resource type="Script" path="res://resources/enemies/enemy.gd" id="8_nknti"]
 [ext_resource type="Resource" uid="uid://bfy4tiw6lcg4f" path="res://resources/enemies/wizard.tres" id="9_fdq18"]
-[ext_resource type="Resource" uid="uid://bl4mbjw87d6o7" path="res://resources/enemies/slime.tres" id="11_1whvf"]
 [ext_resource type="Resource" uid="uid://c1m1abfna1d18" path="res://resources/enemies/bat.tres" id="12_kx4fw"]
 
 [node name="Main" type="Node"]
@@ -34,7 +33,7 @@ experience_manager = NodePath("../ExperienceManager")
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_g4cky")]
 arena_time_manager = NodePath("../ArenaTimeManager")
-enemies = Array[ExtResource("8_nknti")]([ExtResource("8_n4v6b"), ExtResource("9_fdq18"), ExtResource("11_1whvf"), ExtResource("12_kx4fw")])
+enemies = Array[ExtResource("8_nknti")]([ExtResource("8_n4v6b"), ExtResource("9_fdq18"), ExtResource("12_kx4fw")])
 
 [node name="ExperienceManager" parent="." instance=ExtResource("2_d45gx")]
 
