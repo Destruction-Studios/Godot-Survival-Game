@@ -133,7 +133,7 @@ libraries = {
 autoplay = "walk"
 
 [node name="ItemDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_fsgsb")]
-drop_percent = 1.0
+drop_percent = 0.4
 health_component = NodePath("../HealthComponent")
 drop_scene = ExtResource("9_jec8j")
 

@@ -10,6 +10,7 @@ const MIN_SPAWN_RATE_DECREASE = .3;
 
 var base_spawn_time = 0;
 var enemy_table = WeightedTable.new()
+var num_to_spawn = 1
 
 func _ready():
 	for enemy in enemies:
@@ -50,12 +51,13 @@ func on_timer_timeout():
 	if player == null:
 		return;
 	
-	var enemy_scene = enemy_table.pick_item();
-	var enemy = enemy_scene.instantiate();
-	
-	var entities_layer = get_tree().get_first_node_in_group("entities_layer");
-	entities_layer.add_child(enemy);
-	enemy.global_position = get_spawn_position();
+	for i in num_to_spawn:
+		var enemy_scene = enemy_table.pick_item();
+		var enemy = enemy_scene.instantiate();
+		
+		var entities_layer = get_tree().get_first_node_in_group("entities_layer");
+		entities_layer.add_child(enemy);
+		enemy.global_position = get_spawn_position();
 
 
 func on_arena_difficulty_increased(arena_difficulty):
@@ -66,3 +68,6 @@ func on_arena_difficulty_increased(arena_difficulty):
 	for enemy in enemies:
 		if enemy.spawn_at_difficulty == arena_difficulty:
 			enemy_table.add_item(enemy.enemy_scene, enemy.weight);
+	
+	if arena_difficulty % 4 == 0:
+		num_to_spawn += 1
